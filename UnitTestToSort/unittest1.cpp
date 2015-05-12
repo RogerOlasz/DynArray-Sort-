@@ -14,6 +14,7 @@ namespace UnitTestBubbleSort
 		TEST_METHOD(SortTest)
 		{
 			DynArray<int> ToSort;
+			unsigned int count = 0;
 
 			ToSort.PushBack(5);
 			ToSort.PushBack(2);
@@ -21,7 +22,7 @@ namespace UnitTestBubbleSort
 			ToSort.PushBack(9);
 			ToSort.PushBack(3);
 
-			ToSort.BubbleSort();
+			count = ToSort.BubbleSort();
 
 			Assert::IsTrue(ToSort.data[0] < ToSort.data[1]);
 			Assert::IsTrue(ToSort.data[1] < ToSort.data[2]);

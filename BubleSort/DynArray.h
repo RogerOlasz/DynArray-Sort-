@@ -135,16 +135,17 @@ class DynArray
 			return false;
 		}
 
-		void BubbleSort()
+		unsigned int BubbleSort()
 		{
 			unsigned int counter;
-
+			unsigned int counter_cmp = 0;
 			do
 			{
 				counter = 0;
 
 				for (unsigned int i = 0; i < allocated_items - 1; i++)
 				{
+					counter_cmp++;
 					if (data[i] > data[i + 1])
 					{
 						Swap(data[i], data[i + 1]);
@@ -152,6 +153,39 @@ class DynArray
 					}
 				}
 			} while (counter != 0);
+
+		 return counter_cmp;
+		}
+
+		unsigned int BubbleSortOptimized()//
+		{
+			unsigned int counter;
+			unsigned int counter_cmp = 0;
+			unsigned int last_pos_swap = allocated_items;
+
+			do
+			{
+				counter = 0;
+
+				for (unsigned int i = 0; i < last_pos_swap - 1; i++)
+				{
+					
+					for (unsigned int j = 0; j < allocated_items - 1; j++)
+					{
+						last_pos_swap = 0;
+						counter_cmp++;
+						last_pos_swap++;
+						if (data[i] > data[j + 1])
+						{
+							Swap(data[i], data[j + 1]);
+							counter++;
+						}
+					}
+					
+				}
+			} while (counter != 0);
+
+		 return counter_cmp;
 		}
 
 		int& operator[](unsigned int index)
