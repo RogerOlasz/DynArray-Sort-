@@ -180,7 +180,7 @@ class DynArray
 			unsigned int sever = allocated_items - 1;
 			unsigned int counter = 0;
 
-			while (sever > 1 || swapped == true)
+			do
 			{
 				sever /= 1.3;
 				if (sever < 1)
@@ -199,7 +199,8 @@ class DynArray
 						swapped = true;
 					}
 				}
-			}
+			} while (sever > 1 || swapped == true);
+
 			return counter;
 		}
 
