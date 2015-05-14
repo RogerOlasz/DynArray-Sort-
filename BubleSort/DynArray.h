@@ -157,35 +157,50 @@ class DynArray
 		 return counter_cmp;
 		}
 
-		unsigned int BubbleSortOptimized()//
+		unsigned int Cocktail()
 		{
-			unsigned int counter;
-			unsigned int counter_cmp = 0;
-			unsigned int last_pos_swap = allocated_items;
-
-			do
+			unsigned int counter = 0;
+			for (unsigned int i = 0; i < allocated_items - 1; i++)
 			{
-				counter = 0;
-
-				for (unsigned int i = 0; i < last_pos_swap - 1; i++)
+				for (unsigned int j = i + 1; j < allocated_items; j++)
 				{
-					
-					for (unsigned int j = 0; j < allocated_items - 1; j++)
-					{
-						last_pos_swap = 0;
-						counter_cmp++;
-						last_pos_swap++;
-						if (data[i] > data[j + 1])
-						{
-							Swap(data[i], data[j + 1]);
-							counter++;
-						}
+					counter++;
+					if (data[i] > data[j]) 
+					{ 
+						Swap(data[i], data[j]); 
 					}
-					
 				}
-			} while (counter != 0);
+			}
+			return counter;
+		}
 
-		 return counter_cmp;
+		unsigned int CombSort()
+		{
+			bool swapped = true;
+			unsigned int sever = allocated_items - 1;
+			unsigned int counter = 0;
+
+			while (sever > 1 || swapped == true)
+			{
+				sever /= 1.3;
+				if (sever < 1)
+				{
+					sever = 1;
+				}
+					
+				swapped = false;
+
+				for (unsigned int i = 0; i + sever < allocated_items; i++)
+				{
+					counter++;
+					if (data[i] > data[i + sever])
+					{
+						Swap(data[i], data[i + sever]);
+						swapped = true;
+					}
+				}
+			}
+			return counter;
 		}
 
 		int& operator[](unsigned int index)
