@@ -177,29 +177,29 @@ class DynArray
 		unsigned int CombSort()
 		{
 			bool swapped = true;
-			unsigned int sever = allocated_items - 1;
+			unsigned int gap = allocated_items - 1;
 			unsigned int counter = 0;
 
 			do
 			{
-				sever /= 1.3;
-				if (sever < 1)
+				gap /= 1.3;
+				if (gap < 1)
 				{
-					sever = 1;
+					gap = 1;
 				}
 					
-				swapped = false;
+				gap = false;
 
-				for (unsigned int i = 0; i + sever < allocated_items; i++)
+				for (unsigned int i = 0; i + gap < allocated_items; i++)
 				{
 					counter++;
-					if (data[i] > data[i + sever])
+					if (data[i] > data[i + gap])
 					{
-						Swap(data[i], data[i + sever]);
+						Swap(data[i], data[i + gap]);
 						swapped = true;
 					}
 				}
-			} while (sever > 1 || swapped == true);
+			} while (gap > 1 || swapped == true);
 
 			return counter;
 		}
