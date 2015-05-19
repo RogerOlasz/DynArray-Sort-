@@ -1,27 +1,23 @@
 #include "DynArray.h"
-#include <time.h>
-#include <random>
 
 int main(int argv, char** argc)
 {
-	srand(100);
 
-	DynArray<int> ToSort;
+	DynArray<int> ToFlip;
 
-	unsigned int count = 0;
-	unsigned int count_coct = 0;
-	unsigned int count_comb = 0;
+	ToFlip.PushBack(1);
+	ToFlip.PushBack(2);
+	ToFlip.PushBack(3);
+	ToFlip.PushBack(4);
+	ToFlip.PushBack(5);
+	ToFlip.PushBack(6);
+	ToFlip.PushBack(7);
 
-	for (unsigned int i = 0; i <= 10000; i++)
-	{
-		ToSort.PushBack(rand());
-	}
+	printf("%d\n%d\n%d\n%d\n%d\n%d\n%d\n\n", ToFlip.data[0], ToFlip.data[1], ToFlip.data[2], ToFlip.data[3], ToFlip.data[4], ToFlip.data[5], ToFlip.data[6]);
 
-	count = ToSort.BubbleSort();
-	count_coct = ToSort.Cocktail();
-	count_comb = ToSort.CombSort();
+	ToFlip.Flip();
 
-	printf("%d\n%d\n%d", count, count_coct, count_comb);
+	printf("%d\n%d\n%d\n%d\n%d\n%d\n%d\n", ToFlip.data[0], ToFlip.data[1], ToFlip.data[2], ToFlip.data[3], ToFlip.data[4], ToFlip.data[5], ToFlip.data[6]);
 
 	getchar();
 

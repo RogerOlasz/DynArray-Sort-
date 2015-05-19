@@ -206,14 +206,13 @@ class DynArray
 
 		void Flip()
 		{
-			Type* start = &data[0];
-			Type* end = &data[allocated_items-1];
+			unsigned int end = allocated_items;
 
-			while (start < end)
+			for (unsigned int i = 0; i < allocated_items - 1; i++)
 			{
-				Swap(*start++, *end--);
+				end--;
+				Swap(data[i], data[end]);	
 			}
-			
 		}
 
 		int& operator[](unsigned int index)
