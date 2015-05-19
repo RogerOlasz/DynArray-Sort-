@@ -212,8 +212,12 @@ class DynArray
 			while (start < end)
 			{
 				Swap(*start++, *end--);
-			}
-			
+			}	
+		}
+
+		unsigned int Fibonacci(const int position)
+		{
+			return Fibonacci(position);
 		}
 
 		int& operator[](unsigned int index)
